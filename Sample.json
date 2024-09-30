@@ -1,0 +1,234 @@
+{
+  "msg": "OK",
+  "code": 0,
+  "data": {
+    "submitDataList": [
+      {
+        "basicInfo": {
+          "contestId": 91841,
+          "contestType": 1,
+          "endTime": 1727616506000,
+          "name": "2024年国际大学生程序设计竞赛（ACM-ICPC）新疆赛区大赛(重现赛)",
+          "startTime": 1727598506000,
+          "type": 0
+        },
+        "signUpUsers": [
+          {
+            "name": "Core_65536",
+            "school": "辽宁大学",
+            "team": false,
+            "uid": 296096006
+          },
+          {
+            "name": "C0r3_65536",
+            "school": "Microsoft",
+            "team": false,
+            "uid": 838042108
+          }
+        ],
+        "submissions": [
+          {
+            "problemId": 273392,
+            "rightCaseRate": 1,
+            "status": 5,
+            "submissionId": 71643824,
+            "submitTime": 1727598521000,
+            "timeConsumption": 3,
+            "uid": 296096006
+          },
+          {
+            "problemId": 273393,
+            "rightCaseRate": 1,
+            "status": 5,
+            "submissionId": 71643833,
+            "submitTime": 1727598534000,
+            "timeConsumption": 2943,
+            "uid": 296096006
+          },
+          {
+            "problemId": 273394,
+            "rightCaseRate": 1,
+            "status": 5,
+            "submissionId": 71643847,
+            "submitTime": 1727598563000,
+            "timeConsumption": 721,
+            "uid": 296096006
+          },
+          {
+            "problemId": 273396,
+            "rightCaseRate": 1,
+            "status": 5,
+            "submissionId": 71643851,
+            "submitTime": 1727598576000,
+            "timeConsumption": 21,
+            "uid": 296096006
+          },
+          {
+            "problemId": 273395,
+            "rightCaseRate": 1,
+            "status": 5,
+            "submissionId": 71643858,
+            "submitTime": 1727598589000,
+            "timeConsumption": 203,
+            "uid": 296096006
+          },
+          {
+            "problemId": 273397,
+            "rightCaseRate": 1,
+            "status": 5,
+            "submissionId": 71643869,
+            "submitTime": 1727598609000,
+            "timeConsumption": 20,
+            "uid": 296096006
+          },
+          {
+            "problemId": 273398,
+            "rightCaseRate": 1,
+            "status": 5,
+            "submissionId": 71643880,
+            "submitTime": 1727598623000,
+            "timeConsumption": 214,
+            "uid": 296096006
+          },
+          {
+            "problemId": 273391,
+            "rightCaseRate": 0,
+            "status": 21,
+            "submissionId": 71643900,
+            "submitTime": 1727598654000,
+            "timeConsumption": 45,
+            "uid": 296096006
+          },
+          {
+            "problemId": 273390,
+            "rightCaseRate": 1,
+            "status": 5,
+            "submissionId": 71643920,
+            "submitTime": 1727598695000,
+            "timeConsumption": 37,
+            "uid": 296096006
+          },
+          {
+            "problemId": 273389,
+            "rightCaseRate": 1,
+            "status": 5,
+            "submissionId": 71643924,
+            "submitTime": 1727598702000,
+            "timeConsumption": 2,
+            "uid": 296096006
+          },
+          {
+            "problemId": 273391,
+            "rightCaseRate": 1,
+            "status": 5,
+            "submissionId": 71643935,
+            "submitTime": 1727598733000,
+            "timeConsumption": 996,
+            "uid": 296096006
+          },
+          {
+            "problemId": 273392,
+            "rightCaseRate": 1,
+            "status": 5,
+            "submissionId": 71644848,
+            "submitTime": 1727600282000,
+            "timeConsumption": 3,
+            "uid": 838042108
+          }
+        ]
+      }
+    ],
+    "problemData": [
+      {
+        "score": 0,
+        "index": "A",
+        "problemId": 273392,
+        "title": "How Many Permutation?",
+        "info": {
+
+        }
+      },
+      {
+        "score": 0,
+        "index": "B",
+        "problemId": 273393,
+        "title": "Ternary Tree",
+        "info": {
+
+        }
+      },
+      {
+        "score": 0,
+        "index": "C",
+        "problemId": 273394,
+        "title": "Good Partition",
+        "info": {
+
+        }
+      },
+      {
+        "score": 0,
+        "index": "D",
+        "problemId": 273396,
+        "title": "Merge Fruits",
+        "info": {
+
+        }
+      },
+      {
+        "score": 0,
+        "index": "E",
+        "problemId": 273395,
+        "title": "Traffic Lights",
+        "info": {
+
+        }
+      },
+      {
+        "score": 0,
+        "index": "F",
+        "problemId": 273397,
+        "title": "Sequence",
+        "info": {
+
+        }
+      },
+      {
+        "score": 0,
+        "index": "G",
+        "problemId": 273398,
+        "title": "Concert",
+        "info": {
+
+        }
+      },
+      {
+        "score": 0,
+        "index": "H",
+        "problemId": 273391,
+        "title": "Magic Transport",
+        "info": {
+
+        }
+      },
+      {
+        "score": 0,
+        "index": "I",
+        "problemId": 273390,
+        "title": "A Math Problem",
+        "info": {
+
+        }
+      },
+      {
+        "score": 0,
+        "index": "J",
+        "problemId": 273389,
+        "title": "Final Coordinates",
+        "info": {
+
+        }
+      }
+    ]
+  }
+}
