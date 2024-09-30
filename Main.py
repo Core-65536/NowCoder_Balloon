@@ -1,4 +1,3 @@
-import _thread
 import queue
 import time
 
