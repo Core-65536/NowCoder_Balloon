@@ -24,7 +24,7 @@ BalloonColor = {    # 题号对应的气球颜色，可以修改
     'M': 'magenta',
     'N': 'lime'
 }
-ContestID = 91947   # 比赛ID，可以修改
+ContestID = 91177   # 比赛ID，可以修改
 ProgramLiveTime = 3600 * 5  # 比赛持续时间，单位秒，可以修改
 DDosTime = 30    # 防止对服务器造成过大负担的时间，建议最小值为30s
 
