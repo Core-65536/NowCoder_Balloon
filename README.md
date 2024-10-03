@@ -3,7 +3,7 @@
 Python环境：Python 3.12
 
 安装程序依赖：
-  `pip install requests pandas`
+  `pip install requests pandas pywin32`
 
 使用指南：\
   首先运行`ExportSeatsDict.py`, 选择座位表导入至json中 \
