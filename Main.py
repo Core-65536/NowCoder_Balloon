@@ -2,6 +2,8 @@ import queue
 import time
 
 import _tkinter
+import win32api
+import win32con
 
 import Crawler
 import GUI
@@ -32,6 +34,7 @@ def main():
     ProgramStartTime = time.time()
     TeamHashMap = {}
     SeatsDict = Utils.LoadSeatsDict()
+    FirstBlood = {}
 
     while time.time() - ProgramStartTime <= ProgramLiveTime:    # 比赛持续时间内运行
         # 初始化获取提交列表、题目字典、用户字典、状态字典
@@ -51,6 +54,10 @@ def main():
                     CurrentSeat = SeatsDict[i[0]]
                 else:
                     CurrentSeat = '301-Default'
+                if i[1] not in FirstBlood:
+                    FirstBlood[i[1]] = i[0]
+                    win32api.MessageBox(0, f"题号{i[1]}由{i[0]}队伍首杀", "NowCoder_Balloon", win32con.MB_ICONWARNING)
+                    continue
                 balloon_queue.put({
                     "team": i[0],                   # 队伍名
                     "Seat": CurrentSeat,               # 座位号
