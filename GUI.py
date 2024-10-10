@@ -1,10 +1,15 @@
+import os
+import json
 import tkinter as tk
+
+import Main
 
 
 # GUI界面
 # Author: ChatGPT-GPT4o
 class BalloonApp:
     def __init__(self, root, balloon_queue):
+        self.RealDelivered = []
         self.labels = None
         self.Count = 0
         self.queueLen = balloon_queue.qsize()
@@ -49,12 +54,19 @@ class BalloonApp:
         for idx, info in enumerate(self.balloon_info):
             self.labels[idx][0].config(text=info["team"])  # 队伍名
             self.labels[idx][1].config(text=info["Seat"])  # 座位号
-            self.labels[idx][2].config(text=info["color"], bg=info["color"].lower())  # 气球颜色
+            self.labels[idx][2].config(text=Main.ColorBalloon[info["color"]], bg=info["color"].lower())  # 气球颜色
 
     def balloon_delivered(self, idx):
         # 当前行的任务标记为已送达，并更新为队列中下一个任务
         if idx < len(self.balloon_info):
             print(f"气球已送达: {self.balloon_info[idx]['team']}")
+            if os.path.exists("RealDelivered.json"):
+                self.RealDelivered = json.load(open("RealDelivered.json", "r", encoding='utf-8'))
+                os.remove("RealDelivered.json")
+            self.RealDelivered.append(self.balloon_info[idx])
+            with open("RealDelivered.json", "w", encoding='utf-8') as f:
+                json.dump(self.RealDelivered, f, ensure_ascii=False, indent=4)
+
             if not self.balloon_queue.empty():
                 # 从队列中取下一个任务并替换掉当前的
                 next_task = self.balloon_queue.get_nowait()
@@ -62,7 +74,7 @@ class BalloonApp:
                 # 更新当前行的信息
                 self.labels[idx][0].config(text=next_task["team"])
                 self.labels[idx][1].config(text=next_task["Seat"])
-                self.labels[idx][2].config(text=next_task["color"], bg=next_task["color"].lower())
+                self.labels[idx][2].config(text=Main.ColorBalloon[next_task["color"]], bg=next_task["color"].lower())
             else:
                 self.labels[idx][0].config(text='队伍名')
                 self.labels[idx][1].config(text='座位号')

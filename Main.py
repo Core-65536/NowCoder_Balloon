@@ -1,5 +1,7 @@
+import json
 import queue
 import time
+import os
 
 import _tkinter
 import win32api
@@ -9,34 +11,61 @@ import Crawler
 import GUI
 import Utils
 
-BalloonColor = {    # 题号对应的气球颜色，可以修改
-    'A': 'red',
-    'B': 'blue',
-    'C': 'yellow',
-    'D': 'green',
-    'E': 'purple',
-    'F': 'orange',
+BalloonColor = {  # 题号对应的气球颜色，可以修改
+    'A': 'purple',
+    'B': 'green',
+    'C': 'orange',
+    'D': 'black',
+    'E': 'blue',
+    'F': 'lime',
     'G': 'pink',
-    'H': 'brown',
-    'I': 'black',
+    'H': 'red',
+    'I': 'yellow',
     'J': 'white',
     'K': 'gray',
     'L': 'cyan',
     'M': 'magenta',
-    'N': 'lime'
+    'N': 'azure',
 }
-ContestID = 91177   # 比赛ID，可以修改
+ColorBalloon = {
+    'purple': 'A',
+    'green': 'B',
+    'orange': 'C',
+    'black': 'D',
+    'blue': 'E',
+    'lime': 'F',
+    'pink': 'G',
+    'red': 'H',
+    'yellow': 'I',
+    'white': 'J',
+    'gray': 'K',
+    'cyan': 'L',
+    'magenta': 'M',
+    'azure': 'N',
+}
+ContestID = 90207  # 比赛ID，可以修改
 ProgramLiveTime = 3600 * 5  # 比赛持续时间，单位秒，可以修改
-DDosTime = 30    # 防止对服务器造成过大负担的时间，建议最小值为30s
+DDosTime = 30  # 防止对服务器造成过大负担的时间，建议最小值为30s
+DoNotIgnoreAlreadyDelivered = 1  # 是否忽略已经送达的队伍，1为不忽略，0为忽略
 
 
 def main():
+    if win32api.MessageBox(0, "是否第一次启动程序？", "NowCoder_Balloon", win32con.MB_ICONQUESTION | win32con.MB_YESNO) == win32con.IDYES:
+        if os.path.exists("RealDelivered.json"):
+            os.remove("RealDelivered.json")
     ProgramStartTime = time.time()
-    TeamHashMap = {}
     SeatsDict = Utils.LoadSeatsDict()
     FirstBlood = {}
-
-    while time.time() - ProgramStartTime <= ProgramLiveTime:    # 比赛持续时间内运行
+    while time.time() - ProgramStartTime <= ProgramLiveTime:  # 比赛持续时间内运行
+        TeamHashMap = {}
+        if DoNotIgnoreAlreadyDelivered:
+            try:
+                with open('RealDelivered.json', 'r', encoding='utf-8') as f:
+                    Delivered = json.load(f)
+                    for i in Delivered:
+                        TeamHashMap[(i['team'], ColorBalloon[i['color']])] = 1
+            except FileNotFoundError:
+                pass
         # 初始化获取提交列表、题目字典、用户字典、状态字典
         SubmitList = Crawler.GetSubmitList(ContestID)
         ProblemDict = Crawler.GetProblemDict(SubmitList)
@@ -53,28 +82,28 @@ def main():
                 if i[0] in SeatsDict:
                     CurrentSeat = SeatsDict[i[0]]
                 else:
-                    CurrentSeat = '301-Default'
+                    CurrentSeat = 'No_Seats'
                 if i[1] not in FirstBlood:
                     FirstBlood[i[1]] = i[0]
                     win32api.MessageBox(0, f"题号{i[1]}由{i[0]}队伍首杀", "NowCoder_Balloon", win32con.MB_ICONWARNING)
                     continue
                 balloon_queue.put({
-                    "team": i[0],                   # 队伍名
-                    "Seat": CurrentSeat,               # 座位号
-                    "color": BalloonColor[i[1]]     # 气球颜色
+                    "team": i[0],  # 队伍名
+                    "Seat": CurrentSeat,  # 座位号
+                    "color": BalloonColor[i[1]]  # 气球颜色
                 })
-        if balloon_queue.empty():   # 如果没有队伍AC，则不启动GUI
+        if balloon_queue.empty():  # 如果没有队伍AC，则不启动GUI
             while time.time() - StartTime <= DDosTime:  # 防止对服务器造成过大负担, 最小值建议为30s
                 time.sleep(1)
             continue
         # 初始化GUI
         root = GUI.tk.Tk()
-        GUI.BalloonApp(root, balloon_queue)     # 传入气球队列
-        root.mainloop()     # 运行GUI
+        GUI.BalloonApp(root, balloon_queue)  # 传入气球队列
+        root.mainloop()  # 运行GUI
         try:
             root.destroy()  # 关闭GUI
         except _tkinter.TclError:  # 在志愿者直接关闭窗口时, destroy()会报错
-            pass    # 无需处理错误
+            pass  # 无需处理错误
         while time.time() - StartTime <= DDosTime:  # 防止对服务器造成过大负担, 最小值建议为30s
             time.sleep(1)
 

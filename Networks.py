@@ -7,9 +7,11 @@ headers = {
 
 
 def Net_Get(url):
+    print(url)
     try:
         rp = requests.get(url, headers=headers)
     except Exception as e:
         rp = None
         print(e)
+    print(rp.text)
     return rp.text

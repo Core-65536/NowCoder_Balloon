@@ -4,7 +4,7 @@ import Networks
 import Utils
 
 # 是否启用学校筛选功能
-SelectSchool = 1
+SelectSchool = 0
 SchoolName = '辽宁大学'
 
 
