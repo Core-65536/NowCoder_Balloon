@@ -45,7 +45,7 @@ ColorBalloon = {  # 气球颜色对应的题号，可以修改
 }
 ContestID = 92670  # 比赛ID，可以修改
 ProgramLiveTime = 3600 * 5  # 比赛持续时间，单位秒，可以修改
-DDosTime = 10  # 防止对服务器造成过大负担的时间，建议最小值为30s
+DDosTime = 30  # 防止对服务器造成过大负担的时间，建议最小值为30s
 DoNotIgnoreAlreadyDelivered = 1  # 是否忽略已经送达的队伍，1为不忽略，0为忽略
 # 是否启用学校筛选功能
 SelectSchool = 0
