@@ -1,0 +1,22 @@
+[
+    {
+        "team": "Beater_",
+        "Seat": "301-B1",
+        "color": "purple"
+    },
+    {
+        "team": "Core_65536",
+        "Seat": "301-A1",
+        "color": "green"
+    },
+    {
+        "team": "Core_65536",
+        "Seat": "301-A1",
+        "color": "purple"
+    },
+    {
+        "team": "Beater_",
+        "Seat": "301-B1",
+        "color": "green"
+    }
+]

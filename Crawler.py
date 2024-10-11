@@ -1,11 +1,8 @@
 import json
 
+import Main
 import Networks
 import Utils
-
-# 是否启用学校筛选功能
-SelectSchool = 0
-SchoolName = '辽宁大学'
 
 
 # 获取题目字典, 返回字典{题目ID: 题目序号}
@@ -23,10 +20,10 @@ def GetUserIdDict(SubmitList):
     UserIdDict = {}
     SubmitList = SubmitList['submitDataList'][0]['signUpUsers']
     for i in SubmitList:
-        if SelectSchool == 1:
+        if Main.SelectSchool == 1:
             # 存在没有school字段的用户, 采用try-except处理
             try:
-                if i['school'] == SchoolName:
+                if i['school'] == Main.SchoolName:
                     UserIdDict[i['uid']] = i['name']
             except KeyError:
                 pass    # 无需处理
@@ -45,13 +42,13 @@ def GetSubmitList(ContestID):
     return SubmitList
 
 
-# 获取状态字典, 返回字典{(用户名, 题目序号): 1}
+# 获取状态字典, 返回字典{(uid, 题目序号): 1}
 def GetStatusDict(SubmitList, UserIdDict, ProblemDict):
     StatusDict = {}
     SubmitList = SubmitList['submitDataList'][0]['submissions']
     for i in SubmitList:
         # status: 5表示AC, uid在UserIdDict中为采用学校筛选时的过滤措施
         if i['status'] == 5 and i['uid'] in UserIdDict:
-            pair = (UserIdDict[i['uid']], ProblemDict[i['problemId']])
+            pair = (i['uid'], ProblemDict[i['problemId']])
             StatusDict[pair] = 1
     return StatusDict

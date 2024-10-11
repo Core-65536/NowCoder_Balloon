@@ -81,5 +81,5 @@ class BalloonApp:
                 self.labels[idx][2].config(text='气球颜色', bg='white')
                 self.Count += 1
                 if self.Count >= 3:
-                    print("所有气球任务已送达，程序退出。")
+                    print("所有气球任务已送达，图形界面退出")
                     self.root.after(1000, self.root.quit)
